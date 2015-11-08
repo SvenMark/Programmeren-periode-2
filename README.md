@@ -6,7 +6,6 @@ This README would normally document whatever steps are necessary to get your app
 
 * Versie
 * 1.0.0
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
 ### How do I get set up? ###
 
