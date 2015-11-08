@@ -9,12 +9,24 @@ This README would normally document whatever steps are necessary to get your app
 
 ### How do I get set up? ###
 
-* stap 1 is om het project met git te clonen
-* stap 2 is om het project te openen in visual studio
-* stap 3 i
-* Database configuration
-* How to run tests
-* Deployment instructions
+Je kan de volgende YouTube video kijken met uitleg.
+
+het git commando: 
+git clone https://jorislops@bitbucket.org/jorislops/programmeren2testsstudent.git
+
+* Stap 1 Haal het project binnen git te clonen
+       -maak een directory aan waar je wilt clonen,
+       -gebruik het volgende commando om het project binnen te halen:
+             git clone https://jorislops@bitbucket.org/jorislops/programmeren2testsstudent.git
+* Stap 2 is om het project te openen in visual studio (navigeer naar de directory en open de solution)
+* Stap 3 is om dll te linken. Klik recht op references in de solution explorer. 
+      Add Reference --> Browse 
+      <projectdir>\programmeren2testsstudent\Programmeren2Opdrachten\dll\Programmeren2Tests.dll
+* Step 4 binnenhalen van NUnit, klink rechts op de project "Programmeren2Opdrachten", en klick vervolgens op Manage NuGetPackage Packages. Zoek naar NUnit en installeer deze.
+* Stap 5 bouw het project. Build --> Build Solution of druk op F6
+* Stap 6 begin met het implementeren van de code. 
+* Stap 7 klink recht in een test methode (te herkennen aan [Test] annotatie). Klink op Run Test. Als het goed is verschijnt nu de Test Explorer met de het resultaat van de test. 
+
 
 ### Contribution guidelines ###
 
