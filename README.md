@@ -29,6 +29,10 @@ git clone https://jorislops@bitbucket.org/jorislops/programmeren2testsstudent.gi
 * Stap 7 Begin met het implementeren van de code. 
 * Stap 8 Klink rechts in een test methode (te herkennen aan [Test] annotatie). Klink op Run Test. Als het goed is zal de test draaien en de uitkomst wordt zichtbaar in de Test Explorer. Als dit niet gebeurt (Test --> Windows --> TestExplorer).
 
+* Stap 9 Maak de opdrachten. Haal de regel volgende regel weg: 
+   throw new NotImplementedException();
+  En plaats hier je eigen code. 
+
 
 ### Contribution guidelines ###
 
