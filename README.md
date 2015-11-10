@@ -21,10 +21,13 @@ git clone https://jorislops@bitbucket.org/jorislops/programmeren2testsstudent.gi
 * Stap 3 Link de missende DLL. Klik rechts op references in de Solution Explorer. 
       Add Reference --> Browse 
       <projectdir>\programmeren2testsstudent\Programmeren2Opdrachten\dll\Programmeren2Tests.dll
-* Step 4 Binnenhalen van NUnit, klink rechts op het project "Programmeren2Opdrachten", en klik vervolgens op Manage NuGetPackage Packages. Zoek naar NUnit en installeer deze package.
-* Stap 5 Bouw het project. Build --> Build Solution of druk op F6
-* Stap 6 Begin met het implementeren van de code. 
-* Stap 7 Klink rechts in een test methode (te herkennen aan [Test] annotatie). Klink op Run Test. Als het goed is zal de test draaien en de uitkomst wordt zichtbaar in de Test Explorer. Als dit niet gebeurt (Test --> Windows --> TestExplorer).
+* Stap 4 Binnenhalen van NUnit, klink rechts op het project "Programmeren2Opdrachten", en klik vervolgens op Manage NuGetPackage Packages. Zoek naar NUnit en installeer deze package.
+
+* Stap 5 [Nieuw] Je moet ook de Test Adapter van NUnit installeren. Dit doe je als volgt: Tools --> Extensions & Updates --> online --> zoeken naar NUnit --> installeer de Test Adapter van NUnit. Herstart Visual Studio. 
+
+* Stap 6 Bouw het project. Build --> Build Solution of druk op F6
+* Stap 7 Begin met het implementeren van de code. 
+* Stap 8 Klink rechts in een test methode (te herkennen aan [Test] annotatie). Klink op Run Test. Als het goed is zal de test draaien en de uitkomst wordt zichtbaar in de Test Explorer. Als dit niet gebeurt (Test --> Windows --> TestExplorer).
 
 
 ### Contribution guidelines ###
@@ -33,4 +36,4 @@ git clone https://jorislops@bitbucket.org/jorislops/programmeren2testsstudent.gi
 * Zelf de test kunnen fouten bevatten! Jullie input is dan ook zeer wenselijk om het materiaal te verbeteren.
 
 ### Who do I talk to? ###
- * Joris of Dick 
+ * Joris of Dick
