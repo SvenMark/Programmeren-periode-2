@@ -76,7 +76,7 @@ namespace Programmeren2Opdrachten
         [Test]
         public void TestExercise6()
         {
-            Programmeren2Tests.Chapter11Test.TestExercise6(Programmeren2Tests.Chapter11Test.Exercise6);
+            Programmeren2Tests.Chapter11Test.TestExercise6(Exercise6);
         }
 
         public int Exercise6(string[] xs)
