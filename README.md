@@ -10,6 +10,8 @@
 Je kan de volgende YouTube video bekijken met uitleg hoe je kunt beginnen met de programmeren 2 opdrachten.
 Dit is wellicht duidelijker dan de tekst en uitleg hieronder. 
 
+https://www.youtube.com/watch?v=cWS3P4mqnCo
+
 het git commando: 
 git clone https://jorislops@bitbucket.org/jorislops/programmeren2testsstudent.git
 
