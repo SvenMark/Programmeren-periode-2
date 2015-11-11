@@ -137,9 +137,6 @@ namespace Programmeren2Opdrachten
         //Assert.AreEqual(mirror("C#"), "C##C");
         //Assert.AreEqual(mirror(""), "");
         //Assert.AreEqual(mirror("a"), "aa");
-        // Dick: het laatste testgeval geeft een rare melding ..PSystem.Linq.Enumerable..
-        // Dick: string.Reverse() geeft een Iterator ipv een omgekeerde string
-        // Joris: nu aangepast
         //Remark: don't call any other methods!
  		[Test]
 		public void TestExercise7()
@@ -167,19 +164,10 @@ namespace Programmeren2Opdrachten
 
 
         //9. Write a method that recognizes palindromes. (Hint: use your reverse method to make this easy!):
-        // Dick: deze moet nog aangepast worden
-        // Dick: de code staat er al
 		[Test]
 		public void TestExercise9()
 		{
-			Assert.AreEqual(IsPalindrome("abba"), true);
-			Assert.AreEqual(IsPalindrome("abab"), false);
-			Assert.AreEqual(IsPalindrome("tenet"), true);
-			Assert.AreEqual(IsPalindrome("banana"), false);
-			Assert.AreEqual(IsPalindrome("straw warts"), true);
-			Assert.AreEqual(IsPalindrome("a"), true);
-			//A palindrome must consist of at least one character (after removing punctuation and white space).
-			Assert.AreEqual(IsPalindrome(""), false, "A palindrome must consist of at least one character (after removing punctuation and white space).");    // Is an empty string a palindrome?  You decide.
+
 		}
 
 		public static bool IsPalindrome(string s)
@@ -188,8 +176,6 @@ namespace Programmeren2Opdrachten
 		}
 
 		//Write a method that counts how many times a substring occurs in a string:
-        // Dick: return type van Exercise10 moet int zijn
-        // Joris: aangepast
 		[Test]
 		public void TestExercise10()
 		{
