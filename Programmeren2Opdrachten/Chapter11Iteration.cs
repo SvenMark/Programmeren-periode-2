@@ -113,7 +113,6 @@ namespace Programmeren2Opdrachten
             }
         }
 
-
         //Trace the execution of the last version of generateTable and make yourself more 
         //comfortable with single stepping, and debugging.
         [Test]

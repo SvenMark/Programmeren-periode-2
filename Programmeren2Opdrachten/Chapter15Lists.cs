@@ -8,7 +8,22 @@ namespace Programmeren2Opdrachten
 {
     class Chapter15Lists
     {
-        //3 Write a deep equality test for two arrays of string so that these unit tests pass:
+        //1. Consider this fragment of code:
+        //    List<int> xs = new List<int>();
+        //    List<int> ys = xs;
+        //    ys.Add(42);
+        //Does this create one or two list instances? Would would the value of xs.Count be after executing this code?
+
+
+        //2. What will be the output of the following program?
+        //string[] us = { "I", "am", "not", "a", "crook" };
+        //string[] vs = { "I", "am", "not", "a", "crook" };
+        //Console.WriteLine("Test 1: {0}",  us == vs);
+        //us = vs;
+        //Console.WriteLine("Test 2: {0}", us == vs);
+        //Provide a detailed explanation of the results.
+        
+        //3a Write a deep equality test for two arrays of string so that these unit tests pass:
         [Test]
         public void TestExercise3a()
         {
@@ -27,7 +42,7 @@ namespace Programmeren2Opdrachten
             throw new NotImplementedException();
         }
 
-        //Now do the same for a deep equality test for List<string>.
+        //3b Now do the same for a deep equality test for List<string>.
         [Test]
         public void TestExercise3b()
         {
@@ -46,7 +61,7 @@ namespace Programmeren2Opdrachten
             throw new NotImplementedException();
         }
 
-        //Write two methods that remove all the odd numbers from a list. 
+        //4a Write two methods that remove all the odd numbers from a list. 
         //The first method should build a new list containing only the even elements. 
         //The second method should do an in-place change to the original list.
         [Test]
@@ -75,7 +90,7 @@ namespace Programmeren2Opdrachten
             throw new NotImplementedException();
         }
 
-        //Write a method moveToBack(xs, p). 
+        //5 Write a method moveToBack(xs, p). 
         //The p’th element of the list should “lose its place” and go to the back of the list. 
         //If p is out of bounds, no changes are made. This should be an in-place update.
         [Test]
@@ -97,7 +112,7 @@ namespace Programmeren2Opdrachten
             throw new NotImplementedException();    
         }
 
-        //Re-do the above exercise, this time with fixed-size arrays. 
+        //6 Re-do the above exercise, this time with fixed-size arrays. 
         //You may not use a list for the logic, 
         //nor are you allowed to attempt to resize the array.
         [Test]
@@ -116,15 +131,10 @@ namespace Programmeren2Opdrachten
 
         public static void MoveToBack(int[] xs, int p)
         {
-            if (p < 0 || p >= xs.Length - 1) return;
-            int x = xs[p];
-            for (int k = p; k < xs.Length - 1; k++)
-                xs[k] = xs[k + 1];
-            xs[xs.Length - 1] = x;
-            //throw new NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        //Write a method that deletes any items in a List<int> that are smaller 
+        //7 Write a method that deletes any items in a List<int> that are smaller 
         //than their immediate predecessor in the original list. 
         //The list should be mutated: do not build a new list of items. Study the tests carefully to make sure you understand the requirements.
         //You should try this problem in two ways and compare the code you get. In the first case, work backwards, 

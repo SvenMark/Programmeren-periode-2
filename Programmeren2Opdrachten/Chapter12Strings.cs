@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Programmeren2Opdrachten
 {
@@ -67,11 +68,39 @@ namespace Programmeren2Opdrachten
         
 		public static int IndexOf(string str, char ch, int startPos)
 		{
-			for (int ix = startPos; ix < str.Length; ix++)
-				if (str[ix] == ch) return ix;
+            for (int ix = startPos; ix < str.Length; ix++) 
+            {
+                if (str[ix] == ch)
+                {
+                    return ix;
+                }
+            }
 
 			return -1;
 		}
+
+        public static int IndexOf(string str, string sub, int startPos)
+        {
+            int end = str.Length - sub.Length + 1;
+            for (int ix = startPos; ix < end; ix++)
+            {
+                bool found = true;
+                for (int si = 0; si < sub.Length; si++)
+                {
+                    if(str[ix+si] != sub[si])
+                    {
+                        found = false;
+                        break;
+                    }
+                }
+                if (found)
+                {
+                    return ix;
+                }
+            }
+
+            return -1;
+        }
 
 
         //4 How many times does “queen” occur in the Alice in Wonderland book? Write some code to count them.
@@ -83,9 +112,7 @@ namespace Programmeren2Opdrachten
 
         public static int Exercise4()
         {
-            string text = LoadAliceInWonderland().ToLower();
-
-            throw new NotImplementedException();
+            throw new NotImplementedException();            
         }
 
         //load the book (from file) and return it as a string array
@@ -116,7 +143,13 @@ namespace Programmeren2Opdrachten
             //There is no test, 
             //use System.Diagnostics.Debug.WriteLine(...) instead of Console.WriteLine(...)
 
-            throw new NotImplementedException();
+            //opmerking: je krijgt de output niet goed. Dit komt door het testframework (nunit). 
+            //Dit wil zeggen (spaties en tab's kunnen wegvallen), hierdoor klopt de uitlijning niet meer. 
+            //Ook al de string wel correct geformateerd is.
+            //Met andere woorden maak iets wat er op lijkt! Of als je het perfect wil hebben moet je een console applicatie maken. 
+            
+            
+
 		}
 
 		//6. Write a method that reverses its string argument, and satisfies these tests:
@@ -137,6 +170,9 @@ namespace Programmeren2Opdrachten
         //Assert.AreEqual(mirror("C#"), "C##C");
         //Assert.AreEqual(mirror(""), "");
         //Assert.AreEqual(mirror("a"), "aa");
+        // Dick: het laatste testgeval geeft een rare melding ..PSystem.Linq.Enumerable..
+        // Dick: string.Reverse() geeft een Iterator ipv een omgekeerde string
+        // Joris: nu aangepast
         //Remark: don't call any other methods!
  		[Test]
 		public void TestExercise7()
@@ -146,7 +182,6 @@ namespace Programmeren2Opdrachten
 
 		public static string Exercise7(string s)
 		{
-
             throw new NotImplementedException();
 		}
 
@@ -167,12 +202,19 @@ namespace Programmeren2Opdrachten
 		[Test]
 		public void TestExercise9()
 		{
-
+			Assert.AreEqual(IsPalindrome("abba"), true);
+			Assert.AreEqual(IsPalindrome("abab"), false);
+			Assert.AreEqual(IsPalindrome("tenet"), true);
+			Assert.AreEqual(IsPalindrome("banana"), false);
+			Assert.AreEqual(IsPalindrome("straw warts"), true);
+			Assert.AreEqual(IsPalindrome("a"), true);
+			//A palindrome must consist of at least one character (after removing punctuation and white space).
+			Assert.AreEqual(IsPalindrome(""), false, "A palindrome must consist of at least one character (after removing punctuation and white space).");    // Is an empty string a palindrome?  You decide.
 		}
 
 		public static bool IsPalindrome(string s)
 		{
-            throw new ArgumentException();
+            throw new NotImplementedException();
 		}
 
 		//Write a method that counts how many times a substring occurs in a string:

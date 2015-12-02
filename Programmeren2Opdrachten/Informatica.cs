@@ -63,7 +63,7 @@ namespace Programmeren2Opdrachten
             new Exam() { Student = katrijn,   Course = se,        Score = 9.5m }
         };
 
-        //Geef alle scores aan de hand van de naam de van de desbetreffende student 
+        //Geef alle scores van een student, gebruik als argument de student naam
         [Test]
         public static void TestGetScoreByStudentName()
         {
@@ -75,7 +75,7 @@ namespace Programmeren2Opdrachten
             throw new NotImplementedException();
         }
 
-        //Bepaal aan de hand van de naam de beste score van de desbetreffende student 
+        //Bepaal het hoogste behaalde resultaat van een student, gebruik als argument de student naam
         [Test]
         public static void TestGetHighestScoreByStudentName()
         {
