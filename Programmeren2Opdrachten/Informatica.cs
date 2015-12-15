@@ -16,7 +16,7 @@ namespace Programmeren2Opdrachten
     public class Course
     {
         public int VakNr { get; set; }
-        public string Naam { get; set; }
+        public string Name { get; set; }
         public string Teacher { get; set; }
     }
 
@@ -38,11 +38,11 @@ namespace Programmeren2Opdrachten
             jan, piet, klaas, katrijn
         };
 
-        private static Course cSharp =  new Course() { VakNr = 1, Naam = "C#", Teacher = "Joris" };
-        private static Course math =    new Course() { VakNr = 2, Naam = "Wiskunde", Teacher = "Jos" };
-        private static Course coo =     new Course() { VakNr = 3, Naam = "Computer Oranisation", Teacher = "Sibbele" };
-        private static Course se =      new Course() { VakNr = 3, Naam = "Software Engineering", Teacher = "David" };
-        private static Course python  = new Course() { VakNr = 3, Naam = "Python", Teacher = "Wouter" };
+        private static Course cSharp =  new Course() { VakNr = 1, Name = "C#", Teacher = "Joris" };
+        private static Course math =    new Course() { VakNr = 2, Name = "Wiskunde", Teacher = "Jos" };
+        private static Course coo =     new Course() { VakNr = 3, Name = "Computer Organisation", Teacher = "Sibbele" };
+        private static Course se =      new Course() { VakNr = 3, Name = "Software Engineering", Teacher = "David" };
+        private static Course python  = new Course() { VakNr = 3, Name = "Python", Teacher = "Wouter" };
 
         private static List<Course> courses = new List<Course>() {
             cSharp, math, coo
