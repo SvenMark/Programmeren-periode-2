@@ -123,6 +123,24 @@ namespace Programmeren2Opdrachten
         {
             public String Name { get; set; }
             public decimal Score { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                if (obj is StudentAverage)
+                {
+                    StudentAverage s = (StudentAverage)obj;
+                    return Name == s.Name && Score == s.Score;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            public override int GetHashCode()
+            {
+                return Name.GetHashCode() + Score.GetHashCode();
+            }
         }
 
         public static List<StudentAverage> GetAverageScoreByStudent(string name)
