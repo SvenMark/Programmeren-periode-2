@@ -41,11 +41,11 @@ namespace Programmeren2Opdrachten
         private static Course cSharp =  new Course() { VakNr = 1, Name = "C#", Teacher = "Joris" };
         private static Course math =    new Course() { VakNr = 2, Name = "Wiskunde", Teacher = "Jos" };
         private static Course coo =     new Course() { VakNr = 3, Name = "Computer Organisation", Teacher = "Sibbele" };
-        private static Course se =      new Course() { VakNr = 3, Name = "Software Engineering", Teacher = "David" };
-        private static Course python  = new Course() { VakNr = 3, Name = "Python", Teacher = "Wouter" };
+        private static Course se =      new Course() { VakNr = 4, Name = "Software Engineering", Teacher = "David" };
+        private static Course python  = new Course() { VakNr = 5, Name = "Python", Teacher = "Wouter" };
 
         private static List<Course> courses = new List<Course>() {
-            cSharp, math, coo
+            cSharp, math, coo, se, python
         };
 
         private static List<Exam> exams = new List<Exam>() {
