@@ -101,12 +101,10 @@ namespace Programmeren2Opdrachten
         public int Exercise5(int[] xs)
         {
             int sum = 0;
-            bool first = true;
             foreach (int number in xs)
             {
-                if (number % 2 == 0 && first)
+                if (number % 2 == 0)
                 {
-                    first = false;
                     break;
                 }
                 sum += number;
