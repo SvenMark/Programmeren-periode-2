@@ -42,4 +42,4 @@ git clone https://jorislops@bitbucket.org/jorislops/programmeren2testsstudent.gi
 * Zelf de test kunnen fouten bevatten! Jullie input is dan ook zeer wenselijk om het materiaal te verbeteren.
 
 ### Who do I talk to? ###
- * Joris of Dick
+ * Sven Mark Hofstra ofc scrub
