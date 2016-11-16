@@ -17,7 +17,15 @@ namespace Programmeren2Opdrachten
 
         public static int Exercise1(int[] xs)
         {
-            throw new NotImplementedException();
+            int count = 0;
+            for (int i = 0; i < xs.Length; i++)
+            {
+                if (xs[i] % 2 == 1)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         //Sum up all the even numbers in an array.
@@ -29,7 +37,15 @@ namespace Programmeren2Opdrachten
 
         public static int Exercise2(int[] xs)
         {
-            throw new NotImplementedException();
+            int count = 0;
+            for (int i = 0; i < xs.Length; i++)
+            {
+                if (xs[i] % 2 == 0)
+                {
+                    count += xs[i];
+                }
+            }
+            return count;
         }
 
 
@@ -42,7 +58,15 @@ namespace Programmeren2Opdrachten
 
         public static int Exercise3(int[] xs)
         {
-            throw new NotImplementedException();
+            int count = 0;
+            for (int i = 0; i < xs.Length; i++)
+            {
+                if (xs[i] < 0)
+                {
+                    count += xs[i];
+                }
+            }
+            return count;
         }
 
         //Count how many words in an array have length 5. (Use help to find out how to determine the length of a string.)
@@ -54,7 +78,15 @@ namespace Programmeren2Opdrachten
 
         public static int Exercise4(string[] xs)
         {
-            throw new NotImplementedException();
+            int count = 0;
+            foreach (string word in xs)
+            {
+                if (word.Length == 5)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
 
@@ -68,7 +100,18 @@ namespace Programmeren2Opdrachten
 
         public int Exercise5(int[] xs)
         {
-            throw new NotImplementedException();
+            int sum = 0;
+            bool first = true;
+            foreach (int number in xs)
+            {
+                if (number % 2 == 0 && first)
+                {
+                    first = false;
+                    break;
+                }
+                sum += number;
+            }
+            return sum;
         }
 
         //Count how many words occur in an array up to and including the first occurrence of the word “sam”. 
@@ -81,7 +124,16 @@ namespace Programmeren2Opdrachten
 
         public int Exercise6(string[] xs)
         {
-            throw new NotImplementedException();
+            int count = 0;
+            foreach (string word in xs)
+            {
+                count++;
+                if (word == "sam")
+                {
+                    break;
+                }
+            }
+            return count;
         }
 
         //Add a print statement to Newton’s sqrt method to show better each time it is calculated. 
@@ -107,6 +159,7 @@ namespace Programmeren2Opdrachten
                 double better = (approx + n / approx) / 2.0;
                 if (Math.Abs(approx - better) < 0.001)
                 {
+                    System.Diagnostics.Debug.WriteLine(better);
                     return better;
                 }
                 approx = better;
@@ -144,34 +197,51 @@ namespace Programmeren2Opdrachten
 
         public static int Exercise9(int n)
         {
-            throw new NotImplementedException();
+            int ans = 0;
+            for (int i = 0; i <= n; i++)
+            {
+                ans = (i * (i + 1)) / 2;
+                //Console.Write("{0}          {1}", i, ans);
+            }
+            //Console.WriteLine(ans);
+            //insane amount of returns
+            return ans;
         }
 
 
         //What happens if we call our Collatz sequence generator with a negative integer?
         //What happens if we call it with zero?
         //Change the method so that it outputs an error message in either of these cases, and doesn’t get into an infinite loop.
+        [Test]
         public static void TestExercise10()
         {
             //Collatz(-10);
             //Collatz(0);
+            //Collatz(10);
         }
 
         private static void Collatz(int n)
         {
-            while (n != 1)
+            if (n == 0 || n < 0)
             {
-                Console.Write("{0}, ", n);
-                if (n % 2 == 0)        // n is even
-                {
-                    n /= 2;
-                }
-                else                  // n is odd
-                {
-                    n = n * 3 + 1;
-                }
+                Console.WriteLine("Error");
             }
-            Console.WriteLine("{0}. Yes, it got to 1!", n);
+            else
+            {
+                while (n != 1)
+                {
+                    Console.Write("{0}, ", n);
+                    if (n % 2 == 0)        // n is even
+                    {
+                        n /= 2;
+                    }
+                    else                  // n is odd
+                    {
+                        n = n * 3 + 1;
+                    }
+                }
+                Console.WriteLine("{0}. Yes, it got to 1!", n);
+            }
         }
 
         //Write a method, isPrime, which takes a single integer argument and returns true 
@@ -187,7 +257,17 @@ namespace Programmeren2Opdrachten
 
         public static bool Exercise11(int n)
         {
-            throw new NotImplementedException();
+            if (n == 1) return false;
+            if (n == 2) return true;
+
+            int boundary = Convert.ToInt32(Math.Floor(Math.Sqrt(n)));
+
+            for (int i = 2; i <= boundary; ++i)
+            {
+                if (n % i == 0) return false;
+            }
+
+            return true;
         }
 
         //What will num_digits(0) return? Modify it to return 1 for this case. 
@@ -198,12 +278,17 @@ namespace Programmeren2Opdrachten
         [Test]
         public void TestExercise15()
         {
-            //num_digits(-12345)
+            Assert.AreEqual(1, num_digits(0));
+            Assert.AreEqual(5, num_digits(-12345));
         }
 
         public static int num_digits(int n)
         {
             int count = 0;
+            if (n == 0)
+            {
+                return 1;
+            }
             while (n != 0)
             {
                 count++;
@@ -218,22 +303,38 @@ namespace Programmeren2Opdrachten
         //Remark: don't use conversions/casts, i.e. don't use strings!
         public void TestExercise16()
         {
-            //Assert.AreEqual(NumEvenDigits(123456), 3);
-            //Assert.AreEqual(NumEvenDigits(2468), 4);
-            //Assert.AreEqual(NumEvenDigits(1357), 0);
-            //// Normally we never put leading zeros on numbers, but our number
-            //// system has a special case that probably needs special case handling in the code.
-            //Assert.AreEqual(NumEvenDigits(0), 1);
-            //Assert.AreEqual(NumEvenDigits(0002468), 4);
-            //Assert.AreEqual(NumEvenDigits(-12345), 2);
-            //Assert.AreEqual(NumEvenDigits(-2468), 4);
+            Assert.AreEqual(NumEvenDigits(123456), 3);
+            Assert.AreEqual(NumEvenDigits(2468), 4);
+            Assert.AreEqual(NumEvenDigits(1357), 0);
+            //Normally we never put leading zeros on numbers, but our number
+            //system has a special case that probably needs special case handling in the code.
+            Assert.AreEqual(NumEvenDigits(0), 1);
+            Assert.AreEqual(NumEvenDigits(0002468), 4);
+            Assert.AreEqual(NumEvenDigits(-12345), 2);
+            Assert.AreEqual(NumEvenDigits(-2468), 4);
 
             Programmeren2Tests.Chapter11Test.TestExercise16(NumEvenDigits);
         }
 
         public static int NumEvenDigits(int n)
         {
-            throw new ArgumentException();
+            int calc = 0;
+            int even = 0;
+            n = Math.Abs(n);
+            if (n == 0)
+            {
+                even++;
+            }
+            while(n>0)
+            {
+                calc = n % 2;
+                if (calc == 0)
+                {
+                    even++;
+                }
+                n = n / 10;
+            }
+            return even;
         }
 
         //Write a method sum_of_squares(xs) that computes the sum of the squares of the numbers in the array xs. For example, 
@@ -246,7 +347,11 @@ namespace Programmeren2Opdrachten
 
         public static double Exercise17(double[] xs)
         {
-            throw new NotImplementedException();
+            double sum = 0;
+            foreach (double i in xs) {
+                sum += Math.Pow(i, 2);
+            }
+            return sum;
         }
     }
 }
