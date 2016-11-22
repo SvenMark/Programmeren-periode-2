@@ -44,7 +44,7 @@ namespace Programmeren2Opdrachten
         public void TestExercise2()
         {
             //uncomment next line to test your methode!
-            //Programmeren2Tests.Chapter12Test.TestExercise3(CountLetters);       
+            Programmeren2Tests.Chapter12Test.TestExercise3(CountLetters);       
         }
 
         ////change the return type and paramaters
@@ -52,6 +52,17 @@ namespace Programmeren2Opdrachten
         //{
         //    ...
         //}
+
+        public int CountLetters(string s, char chr)
+        {
+            int count = 0;
+            foreach (char c in s) {
+                if (c == chr) {
+                    count++;
+                }
+            }
+            return count;
+        }
 
 		//3 Now rewrite the count_letters (see above) method so that instead of traversing the string, 
 		//it repeatedly calls the IndexOf method, with the optional third parameter to locate new occurrences of the letter being counted.
@@ -63,7 +74,8 @@ namespace Programmeren2Opdrachten
 
         public static int Exercise3(string s, char chr) 
         {
-            throw new NotImplementedException();
+            int count = IndexOf(s, chr, 0);
+            return count;
         }
         
 		public static int IndexOf(string str, char ch, int startPos)
