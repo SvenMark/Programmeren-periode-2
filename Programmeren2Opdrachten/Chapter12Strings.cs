@@ -11,7 +11,7 @@ namespace Programmeren2Opdrachten
 	public class Chapter12Strings
 	{
         //1 What is the value of each of the following expressions, Explain:
-        //"C#"[1] == C
+        //"C#"[1] == #
         //"C#"[2] == error
         //"Strings are sequences of characters."[5] == g
         //"wonderful".Length = 9
@@ -198,7 +198,12 @@ namespace Programmeren2Opdrachten
 
         public string Exercise6(string str)
         {
-            throw new NotImplementedException();
+            string revstr = "";
+            for (int i = str.Length - 1; i >= 0; i--)
+            {
+                revstr += str[i];
+            }
+            return revstr;
         }
 
 		//7. Write a method that mirrors its argument:
@@ -218,8 +223,15 @@ namespace Programmeren2Opdrachten
 
 		public static string Exercise7(string s)
 		{
-            throw new NotImplementedException();
-		}
+            string revs = "";
+            for (int i = s.Length - 1; i >= 0; i--)
+            {
+                revs += s[i];
+            }
+
+            string mirror = s + revs;
+            return mirror;
+        }
 
 		//8. Write a method that removes all occurrences of a given letter from a string:
 		[Test]
@@ -230,8 +242,16 @@ namespace Programmeren2Opdrachten
 
         public static string Exercise8(char chr, string s)
 		{
-            throw new NotImplementedException();
-		}
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] == chr)
+                {
+                    s = s.Remove(i, 1);
+                    i--;
+                }
+            }
+            return s;
+        }
 
 
         //9. Write a method that recognizes palindromes. (Hint: use your reverse method to make this easy!):
@@ -250,8 +270,24 @@ namespace Programmeren2Opdrachten
 
 		public static bool IsPalindrome(string s)
 		{
-            throw new NotImplementedException();
-		}
+            string revs = "";
+            for (int i = s.Length - 1; i >= 0; i--)
+            {
+                revs += s[i];
+            }
+
+            if (string.IsNullOrWhiteSpace(s))
+            {
+                return false;
+            }
+
+            if (s == revs)
+            {
+                return true;
+            }
+
+            else return false;
+        }
 
 		//Write a method that counts how many times a substring occurs in a string:
 		[Test]
@@ -262,7 +298,12 @@ namespace Programmeren2Opdrachten
 
 		public static int Exercise10(string sub, string str) 
         {
-            throw new NotImplementedException();
+            int i = 0;
+            while (i < str.Length)
+            {
+
+            }
+            return -1;
         }
 
 
