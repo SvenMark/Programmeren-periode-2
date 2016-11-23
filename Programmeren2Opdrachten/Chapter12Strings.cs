@@ -11,20 +11,20 @@ namespace Programmeren2Opdrachten
 	public class Chapter12Strings
 	{
         //1 What is the value of each of the following expressions, Explain:
-        //"C#"[1]
-        //"C#"[2]
-        //"Strings are sequences of characters."[5]
-        //"wonderful".Length
-        //"app" + "le"
-        //"appl" + 'e'
-        //"Mystery".Substring(4)
-        //"Mystery".Substring(4, 2)
-        //"Mystery".IndexOf('y')
-        //"Mystery".IndexOf('z')
-        //"Mystery".IndexOf('y',3)
-        //"Mystery".IndexOf('y',3, 2)
-        //"apple".CompareTo("pineapple") > 0
-        //"pineapple".CompareTo("Peach") == 0
+        //"C#"[1] == C
+        //"C#"[2] == error
+        //"Strings are sequences of characters."[5] == g
+        //"wonderful".Length = 9
+        //"app" + "le" == apple
+        //"appl" + 'e' == apple
+        //"Mystery".Substring(4) == ery
+        //"Mystery".Substring(4, 2) == er
+        //"Mystery".IndexOf('y') == 1
+        //"Mystery".IndexOf('z') == -1
+        //"Mystery".IndexOf('y',3) == 6
+        //"Mystery".IndexOf('y',3, 2) == -1
+        //"apple".CompareTo("pineapple") > 0 == False
+        //"pineapple".CompareTo("Peach") == 0 == False
 
         //2  Encapsulate:
         // First parameter is the string (fruit)
@@ -74,8 +74,7 @@ namespace Programmeren2Opdrachten
 
         public static int Exercise3(string s, char chr) 
         {
-            int count = IndexOf(s, chr, 0);
-            return count;
+            throw new NotImplementedException();
         }
         
 		public static int IndexOf(string str, char ch, int startPos)
@@ -124,7 +123,32 @@ namespace Programmeren2Opdrachten
 
         public static int Exercise4()
         {
-            throw new NotImplementedException();            
+            int count = 0;
+            string book = LoadAliceInWonderland();
+            string cleanedString = remove_punctuation(book);
+            string[] words = cleanedString.Split();
+            foreach (string w in words)
+            {
+                string woord = w.ToLower();
+                if (woord == "queen")
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        public static string remove_punctuation(string s)
+        {
+            string result = "";
+            foreach (char c in s)
+            {
+                if (!char.IsPunctuation(c))
+                {
+                    result += c;                 // This step is inefficient!
+                }
+            }
+            return result;
         }
 
         //load the book (from file) and return it as a string array
