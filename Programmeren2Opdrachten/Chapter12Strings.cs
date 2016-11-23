@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace Programmeren2Opdrachten
 {
@@ -74,7 +75,18 @@ namespace Programmeren2Opdrachten
 
         public static int Exercise3(string s, char chr) 
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(s) || char.IsWhiteSpace(chr))
+            {
+                return 0;
+            }
+            int count = 0;
+            int idx = 0;
+            while ((idx = s.IndexOf(chr, idx)) != -1)
+            {
+                count++;
+                idx++;
+            }
+            return count;
         }
         
 		public static int IndexOf(string str, char ch, int startPos)
@@ -123,19 +135,24 @@ namespace Programmeren2Opdrachten
 
         public static int Exercise4()
         {
-            int count = 0;
-            string book = LoadAliceInWonderland();
-            string cleanedString = remove_punctuation(book);
-            string[] words = cleanedString.Split();
-            foreach (string w in words)
-            {
-                string woord = w.ToLower();
-                if (woord == "queen")
-                {
-                    count++;
-                }
-            }
+            string text = LoadAliceInWonderland();
+            Regex r = new Regex("queen", RegexOptions.IgnoreCase);
+            var count = r.Matches(text).Count;
             return count;
+
+            //int count = 0;
+            //string book = LoadAliceInWonderland();
+            //string cleanedString = remove_punctuation(book);
+            //string[] words = cleanedString.Split();
+            //foreach (string w in words)
+            //{
+            //    string woord = w.ToLower();
+            //    if (woord == "queen")
+            //    {
+            //        count++;
+            //    }
+            //}
+            //return count;
         }
 
         public static string remove_punctuation(string s)
@@ -199,7 +216,7 @@ namespace Programmeren2Opdrachten
         public string Exercise6(string str)
         {
             string revstr = "";
-            for (int i = str.Length - 1; i >= 0; i--)
+            for (int i = str.Length - 1; i >= 0; i--) // -1 voor de .length index 1 wordt 0
             {
                 revstr += str[i];
             }
@@ -242,15 +259,15 @@ namespace Programmeren2Opdrachten
 
         public static string Exercise8(char chr, string s)
 		{
+            string new_string = "";
             for (int i = 0; i < s.Length; i++)
             {
-                if (s[i] == chr)
+                if (s[i] != chr)
                 {
-                    s = s.Remove(i, 1);
-                    i--;
+                    new_string += s[i];
                 }
             }
-            return s;
+            return new_string;
         }
 
 
@@ -298,17 +315,24 @@ namespace Programmeren2Opdrachten
 
 		public static int Exercise10(string sub, string str) 
         {
-            int i = 0;
-            while (i < str.Length)
+            if (string.IsNullOrWhiteSpace(str) || string.IsNullOrWhiteSpace(sub))
             {
-
+                return 0;
             }
-            return -1;
+
+            int count = 0;
+            int idx = 0;
+            while ((idx = str.IndexOf(sub, idx)) != -1)
+            {
+                count++;
+                idx++; //letters hergebruiken??? += sub.Length
+            }
+            return count;
         }
 
 
-		//11 Write a method that removes the first occurrence of a string from another string:
-		[Test]
+        //11 Write a method that removes the first occurrence of a string from another string:
+        [Test]
 		public void TestExercise11()
 		{
             Programmeren2Tests.Chapter12Test.TestExercise11(Exercise11);
@@ -316,7 +340,16 @@ namespace Programmeren2Opdrachten
 
         public static string Exercise11(string first, string str)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(str) || string.IsNullOrWhiteSpace(first))
+            {
+                return "";
+            }
+            int idx = 0;
+            if ((idx = str.IndexOf(first)) != -1)
+            {
+                str = str.Remove(idx, first.Length);
+            }
+            return str;
         }
 
 		//12 Write a method that removes all occurrences of a string from another string:
@@ -328,7 +361,17 @@ namespace Programmeren2Opdrachten
 
         public static string Exercise12(string strToRemove, string str)
 		{
-            throw new NotImplementedException();
-		}
+            if (string.IsNullOrWhiteSpace(str) || string.IsNullOrWhiteSpace(strToRemove))
+            {
+                return "";
+            }
+            int idx = 0;
+            while ((idx = str.IndexOf(strToRemove)) != -1)
+            {
+                str = str.Remove(idx, strToRemove.Length);
+                idx++;
+            }
+            return str;
+        }
 	}
 }
