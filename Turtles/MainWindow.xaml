@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Turtles"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="turtles4lyf" Height="481.373" Width="687.745">
     <Grid>
-        
+        <Canvas x:Name="playground" Margin="209,18,27,20" Background="#FF6AAEA8"/>
+        <Button x:Name="button1" Content="Demo1" HorizontalAlignment="Left" Margin="61,50,0,0" VerticalAlignment="Top" Width="91" Height="36" Click="button_Click"/>
+        <Button x:Name="button2" Content="Demo2" HorizontalAlignment="Left" Margin="61,130,0,0" VerticalAlignment="Top" Width="91" Height="36" Click="button1_Click"/>
+
     </Grid>
 </Window>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ThinkLib;
 
 namespace Turtles
 {
@@ -20,9 +21,27 @@ namespace Turtles
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        Turtle tess;
+
+
         public MainWindow()
         {
             InitializeComponent();
+            tess = new Turtle(playground);
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            tess.Forward(80.0);
+            tess.Right(90.0);
+            tess.Forward(30.0);
+            tess.Right(90.0);
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
