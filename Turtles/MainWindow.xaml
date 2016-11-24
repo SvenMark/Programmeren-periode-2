@@ -7,9 +7,19 @@
         mc:Ignorable="d"
         Title="turtles4lyf" Height="481.373" Width="687.745">
     <Grid>
-        <Canvas x:Name="playground" Margin="209,18,27,20" Background="#FF6AAEA8"/>
-        <Button x:Name="button1" Content="Demo1" HorizontalAlignment="Left" Margin="61,50,0,0" VerticalAlignment="Top" Width="91" Height="36" Click="button_Click"/>
-        <Button x:Name="button2" Content="Demo2" HorizontalAlignment="Left" Margin="61,130,0,0" VerticalAlignment="Top" Width="91" Height="36" Click="button1_Click"/>
+        <Canvas x:Name="playground" Margin="209,18,248,20" Background="#FF6AAEA8"/>
+        <Button x:Name="button" Content="Demo1" HorizontalAlignment="Left" Margin="61,18,0,0" VerticalAlignment="Top" Width="91" Height="36" Click="button_Click"/>
+        <Button x:Name="button1" Content="Demo2" HorizontalAlignment="Left" Margin="61,76,0,0" VerticalAlignment="Top" Width="91" Height="36" Click="button1_Click"/>
+        <Button x:Name="button2" Content="Demo3" HorizontalAlignment="Left" Margin="61,128,0,0" VerticalAlignment="Top" Width="95" Height="40" Click="button2_Click"/>
+        <Button x:Name="button3" Content="Demo4" HorizontalAlignment="Left" Margin="61,187,0,0" VerticalAlignment="Top" Width="95" Height="39" Click="button3_Click"/>
+        <Button x:Name="button4" Content="Clear" HorizontalAlignment="Left" Margin="61,242,0,0" VerticalAlignment="Top" Width="95" Height="37" Click="button4_Click"/>
+        <Slider x:Name="slider" HorizontalAlignment="Left" Margin="61,284,0,0" VerticalAlignment="Top" Width="95" Height="26" ValueChanged="slider_ValueChanged" Maximum="20"/>
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="100" Margin="61,330,0,0" VerticalAlignment="Top" Width="100">
+            <Button x:Name="button5" Content="Green" Width="90" Height="27" Click="button5_Click"/>
+            <Button x:Name="button6" Content="Blue" Width="90" Height="28" Click="button6_Click"/>
+            <Button x:Name="button7" Content="Black" Width="90" Height="24" Click="button7_Click"/>
+        </Menu>
+        <Canvas x:Name="playground1" HorizontalAlignment="Left" Height="412" Margin="467,18,0,0" VerticalAlignment="Top" Width="177" Background="#FF972A2A"/>
 
     </Grid>
 </Window>
