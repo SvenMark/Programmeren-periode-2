@@ -12,20 +12,20 @@ namespace Programmeren2Opdrachten
 	public class Chapter12Strings
 	{
         //1 What is the value of each of the following expressions, Explain:
-        //"C#"[1] == #
-        //"C#"[2] == error
-        //"Strings are sequences of characters."[5] == g
+        //"C#"[1] = #
+        //"C#"[2] = error
+        //"Strings are sequences of characters."[5] = g
         //"wonderful".Length = 9
-        //"app" + "le" == apple
-        //"appl" + 'e' == apple
-        //"Mystery".Substring(4) == ery
-        //"Mystery".Substring(4, 2) == er
-        //"Mystery".IndexOf('y') == 1
-        //"Mystery".IndexOf('z') == -1
-        //"Mystery".IndexOf('y',3) == 6
-        //"Mystery".IndexOf('y',3, 2) == -1
-        //"apple".CompareTo("pineapple") > 0 == False
-        //"pineapple".CompareTo("Peach") == 0 == False
+        //"app" + "le" = apple
+        //"appl" + 'e' = apple
+        //"Mystery".Substring(4) = ery
+        //"Mystery".Substring(4, 2) = er
+        //"Mystery".IndexOf('y') = 6
+        //"Mystery".IndexOf('z') = error
+        //"Mystery".IndexOf('y',3) = 4
+        //"Mystery".IndexOf('y',3, 2) = 6
+        //"apple".CompareTo("pineapple") > 0 = false
+        //"pineapple".CompareTo("Peach") == 0 = error
 
         //2  Encapsulate:
         // First parameter is the string (fruit)
@@ -41,33 +41,30 @@ namespace Programmeren2Opdrachten
         //Console.WriteLine(count);
         //in a method named count_letters, and generalize it so that it accepts the string and the letter as arguments. 
         //Make the method return the number of characters, rather than show the answer.
+
         [Test]
         public void TestExercise2()
         {
             //uncomment next line to test your methode!
-            Programmeren2Tests.Chapter12Test.TestExercise3(CountLetters);       
+            Programmeren2Tests.Chapter12Test.TestExercise3(CountLetters);
         }
 
-        ////change the return type and paramaters
-        //public ... CountLetters(....)
-        //{
-        //    ...
-        //}
-
-        public int CountLetters(string s, char chr)
+        //change the return type and paramaters
+        public static int CountLetters(string s, char chr)
         {
+            string fruit = "banana";
             int count = 0;
-            foreach (char c in s) {
-                if (c == chr) {
-                    count++;
-                }
+            foreach (char c in fruit)
+            {
+                if (c  == 'a')
+                    count += 1;
             }
             return count;
         }
 
-		//3 Now rewrite the count_letters (see above) method so that instead of traversing the string, 
-		//it repeatedly calls the IndexOf method, with the optional third parameter to locate new occurrences of the letter being counted.
-		[Test]
+        //3 Now rewrite the count_letters (see above) method so that instead of traversing the string, 
+        //it repeatedly calls the IndexOf method, with the optional third parameter to locate new occurrences of the letter being counted.
+        [Test]
 		public void TestExercise3()
 		{
             Programmeren2Tests.Chapter12Test.TestExercise3(Exercise3);       
@@ -131,45 +128,19 @@ namespace Programmeren2Opdrachten
 		public void TestExercise4()
 		{
             Programmeren2Tests.Chapter12Test.TestExercise4(Exercise4);
+            
 		}
 
         public static int Exercise4()
         {
             string text = LoadAliceInWonderland();
             Regex r = new Regex("queen", RegexOptions.IgnoreCase);
-            var count = r.Matches(text).Count;
-            return count;
-
-            //int count = 0;
-            //string book = LoadAliceInWonderland();
-            //string cleanedString = remove_punctuation(book);
-            //string[] words = cleanedString.Split();
-            //foreach (string w in words)
-            //{
-            //    string woord = w.ToLower();
-            //    if (woord == "queen")
-            //    {
-            //        count++;
-            //    }
-            //}
-            //return count;
-        }
-
-        public static string remove_punctuation(string s)
-        {
-            string result = "";
-            foreach (char c in s)
-            {
-                if (!char.IsPunctuation(c))
-                {
-                    result += c;                 // This step is inefficient!
-                }
-            }
-            return result;
+            int count = r.Matches(text).Count;
+            return count;    
         }
 
         //load the book (from file) and return it as a string array
-		public static string LoadAliceInWonderland()
+        public static string LoadAliceInWonderland()
 		{
             string aliceFile = Path.Combine(Environment.CurrentDirectory, "bestanden\\alice_in_wonderland.txt");
             return File.ReadAllText(aliceFile);
@@ -190,20 +161,29 @@ namespace Programmeren2Opdrachten
         //10:    10  20  30  40  50  60  70  80  90 100 110 120
         //11:    11  22  33  44  55  66  77  88  99 110 121 132
         //12:    12  24  36  48  60  72  84  96 108 120 132 144
-		[Test]
 		public static void MultiplicationTable()
 		{
-            //There is no test, 
-            //use System.Diagnostics.Debug.WriteLine(...) instead of Console.WriteLine(...)
-
-            //opmerking: je krijgt de output niet goed. Dit komt door het testframework (nunit). 
-            //Dit wil zeggen (spaties en tab's kunnen wegvallen), hierdoor klopt de uitlijning niet meer. 
-            //Ook al de string wel correct geformateerd is.
-            //Met andere woorden maak iets wat er op lijkt! Of als je het perfect wil hebben moet je een console applicatie maken. 
-            
-            
-
-		}
+            int i = 0;
+            Console.Write("\t");
+            while (i < 12)
+            {
+                i++;
+                Console.Write("{0}\t", i);
+            }
+            Console.Write("\n");
+            Console.Write(":--------------------------------------------------------------------------------------------------");
+            Console.Write("\n");
+            for (int row = 1; row <= 12; row++)
+            {
+                Console.Write("{0}:\t", row);
+                for (int col = 1; col <= 12; col++)
+                {
+                    Console.Write("{0}\t", (row * col));
+                }
+                Console.Write("\n");
+            }
+            Console.ReadKey();
+        }
 
 		//6. Write a method that reverses its string argument, and satisfies these tests:
         //Remark: don't call any other methods!
@@ -216,7 +196,7 @@ namespace Programmeren2Opdrachten
         public string Exercise6(string str)
         {
             string revstr = "";
-            for (int i = str.Length - 1; i >= 0; i--) // -1 voor de .length index 1 wordt 0
+            for (int i = str.Length - 1; i >=  0; i--)
             {
                 revstr += str[i];
             }
@@ -235,10 +215,13 @@ namespace Programmeren2Opdrachten
  		[Test]
 		public void TestExercise7()
 		{
-            Programmeren2Tests.Chapter12Test.TestExercise7(Exercise7);
-		}
+            Assert.AreEqual(Exercise7("good"), "gooddoog");
+            Assert.AreEqual(Exercise7("C#"), "C##C");
+            Assert.AreEqual(Exercise7(""), "");
+            Assert.AreEqual(Exercise7("a"), "aa");
+        }
 
-		public static string Exercise7(string s)
+        public static string Exercise7(string s)
 		{
             string revs = "";
             for (int i = s.Length - 1; i >= 0; i--)
@@ -259,20 +242,20 @@ namespace Programmeren2Opdrachten
 
         public static string Exercise8(char chr, string s)
 		{
-            string new_string = "";
             for (int i = 0; i < s.Length; i++)
             {
-                if (s[i] != chr)
+                if (s[i] == chr)
                 {
-                    new_string += s[i];
+                    s = s.Remove(i, 1);
+                    i--;
                 }
             }
-            return new_string;
+            return s;
         }
 
 
         //9. Write a method that recognizes palindromes. (Hint: use your reverse method to make this easy!):
-		[Test]
+        [Test]
 		public void TestExercise9()
 		{
 			Assert.AreEqual(IsPalindrome("abba"), true);
@@ -306,7 +289,7 @@ namespace Programmeren2Opdrachten
             else return false;
         }
 
-		//Write a method that counts how many times a substring occurs in a string:
+		//10 Write a method that counts how many times a substring occurs in a string:
 		[Test]
 		public void TestExercise10()
 		{
@@ -319,20 +302,18 @@ namespace Programmeren2Opdrachten
             {
                 return 0;
             }
-
             int count = 0;
-            int idx = 0;
-            while ((idx = str.IndexOf(sub, idx)) != -1)
+            int index = 0;
+            while ((index = str.IndexOf(sub, index)) != -1)
             {
                 count++;
-                idx++; //letters hergebruiken??? += sub.Length
+                index++;
             }
             return count;
         }
 
-
-        //11 Write a method that removes the first occurrence of a string from another string:
-        [Test]
+		//11 Write a method that removes the first occurrence of a string from another string:
+		[Test]
 		public void TestExercise11()
 		{
             Programmeren2Tests.Chapter12Test.TestExercise11(Exercise11);
@@ -342,12 +323,12 @@ namespace Programmeren2Opdrachten
         {
             if (string.IsNullOrWhiteSpace(str) || string.IsNullOrWhiteSpace(first))
             {
-                return "";
+                return str;
             }
-            int idx = 0;
-            if ((idx = str.IndexOf(first)) != -1)
+            int index;
+            if ((index = str.IndexOf(first)) != -1)
             {
-                str = str.Remove(idx, first.Length);
+                str = str.Remove(index, first.Length);
             }
             return str;
         }
@@ -363,13 +344,12 @@ namespace Programmeren2Opdrachten
 		{
             if (string.IsNullOrWhiteSpace(str) || string.IsNullOrWhiteSpace(strToRemove))
             {
-                return "";
+                return str;
             }
-            int idx = 0;
-            while ((idx = str.IndexOf(strToRemove)) != -1)
+            int index;
+            while ((index = str.IndexOf(strToRemove)) != -1) 
             {
-                str = str.Remove(idx, strToRemove.Length);
-                idx++;
+                str = str.Remove(index, strToRemove.Length);
             }
             return str;
         }

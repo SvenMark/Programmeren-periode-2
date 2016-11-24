@@ -17,15 +17,15 @@ namespace Programmeren2Opdrachten
 
         public static int Exercise1(int[] xs)
         {
-            int count = 0;
+            int teller = 0;
             for (int i = 0; i < xs.Length; i++)
             {
-                if (xs[i] % 2 == 1)
+                if (xs[i] % 2 != 0)
                 {
-                    count++;
+                    teller++;
                 }
             }
-            return count;
+            return teller;
         }
 
         //Sum up all the even numbers in an array.
@@ -37,15 +37,15 @@ namespace Programmeren2Opdrachten
 
         public static int Exercise2(int[] xs)
         {
-            int count = 0;
-            for (int i = 0; i < xs.Length; i++)
+            int totaal = 0;
+            foreach (var x in xs)
             {
-                if (xs[i] % 2 == 0)
+                if (x % 2 == 0)
                 {
-                    count += xs[i];
+                    totaal += x;
                 }
             }
-            return count;
+            return totaal;
         }
 
 
@@ -58,15 +58,15 @@ namespace Programmeren2Opdrachten
 
         public static int Exercise3(int[] xs)
         {
-            int count = 0;
-            for (int i = 0; i < xs.Length; i++)
+            int totaal = 0;
+            foreach (var x in xs)
             {
-                if (xs[i] < 0)
+                if (x < 0)
                 {
-                    count += xs[i];
+                    totaal += x;
                 }
             }
-            return count;
+            return totaal;
         }
 
         //Count how many words in an array have length 5. (Use help to find out how to determine the length of a string.)
@@ -79,9 +79,9 @@ namespace Programmeren2Opdrachten
         public static int Exercise4(string[] xs)
         {
             int count = 0;
-            foreach (string word in xs)
+            foreach (var x in xs)
             {
-                if (word.Length == 5)
+                if (x.Length == 5)
                 {
                     count++;
                 }
@@ -100,16 +100,17 @@ namespace Programmeren2Opdrachten
 
         public int Exercise5(int[] xs)
         {
-            int sum = 0;
-            foreach (int number in xs)
+            int totaal = 0;
+            foreach (var x in xs)
             {
-                if (number % 2 == 0)
+                if (x % 2 == 0)
                 {
                     break;
                 }
-                sum += number;
+
+                totaal += x;
             }
-            return sum;
+            return totaal;
         }
 
         //Count how many words occur in an array up to and including the first occurrence of the word “sam”. 
@@ -123,10 +124,10 @@ namespace Programmeren2Opdrachten
         public int Exercise6(string[] xs)
         {
             int count = 0;
-            foreach (string word in xs)
+            foreach (string x in xs)
             {
                 count++;
-                if (word == "sam")
+                if (x == "sam")
                 {
                     break;
                 }
@@ -140,6 +141,7 @@ namespace Programmeren2Opdrachten
         //Call your modified method with 25 as an argument and record the results.
         //Write down the result in comments
         //This is not a real test, but rather an exercise in tracing
+
         //Extra assignment: try to capture the values of the variable better with the debugging 
         //facilities from Visual Studio 
 
@@ -190,56 +192,58 @@ namespace Programmeren2Opdrachten
         [Test]
         public void TestExercise9()
         {
-            Programmeren2Tests.Chapter11Test.TestExercise9(Exercise9);
+            Assert.AreEqual(Exercise9(5), 15);
         }
 
         public static int Exercise9(int n)
         {
-            int ans = 0;
-            for (int i = 0; i <= n; i++)
+            int dots = 1;
+            int Tn = 1;
+            for (int i = 1; i < n; i++)
             {
-                ans = (i * (i + 1)) / 2;
-                //Console.Write("{0}          {1}", i, ans);
+                System.Diagnostics.Debug.Write(Tn + " " + dots);
+                Tn++;
+                dots += Tn;
+
             }
-            //Console.WriteLine(ans);
-            //insane amount of returns
-            return ans;
+            return dots;
         }
 
 
         //What happens if we call our Collatz sequence generator with a negative integer?
+        //De - kan met /2 en *3 niet plus worden dus wordt het nooit 1 dus blijft de loop infinite doorgaan
+
         //What happens if we call it with zero?
+        //Als je nul deelt of vermenigvuldigt blijft het 0 dus ook altijd ongelijk aan 1 en gaat de loop infinite door
+
         //Change the method so that it outputs an error message in either of these cases, and doesn’t get into an infinite loop.
-        [Test]
         public static void TestExercise10()
         {
             //Collatz(-10);
             //Collatz(0);
-            //Collatz(10);
         }
 
         private static void Collatz(int n)
         {
-            if (n == 0 || n < 0)
+            if (n < 1)
             {
                 Console.WriteLine("Error");
+                Console.ReadKey();      
             }
-            else
+            while (n != 1)
             {
-                while (n != 1)
+                Console.Write("{0}, ", n);
+                if (n % 2 == 0)        // n is even
                 {
-                    Console.Write("{0}, ", n);
-                    if (n % 2 == 0)        // n is even
-                    {
-                        n /= 2;
-                    }
-                    else                  // n is odd
-                    {
-                        n = n * 3 + 1;
-                    }
+                    n /= 2;
                 }
-                Console.WriteLine("{0}. Yes, it got to 1!", n);
+                else                  // n is odd
+                {
+                    n = n * 3 + 1;
+                }
             }
+            Console.WriteLine("{0}. Yes, it got to 1!", n);
+            Console.ReadKey();
         }
 
         //Write a method, isPrime, which takes a single integer argument and returns true 
@@ -247,37 +251,57 @@ namespace Programmeren2Opdrachten
         //Add tests for cases like this:
         //The last cases could represent your birth date. 
         //Were you born on a prime day? In a class of 100 students, how many do you think would have prime birth dates?
+        //1/3
         [Test]
         public void TestExercise11()
         {
+            Exercise11(11);
             Programmeren2Tests.Chapter11Test.TestExercise11(Exercise11);
         }
 
         public static bool Exercise11(int n)
         {
-            if (n == 1) return false;
-            if (n == 2) return true;
-
-            int boundary = Convert.ToInt32(Math.Floor(Math.Sqrt(n)));
-
-            for (int i = 2; i <= boundary; ++i)
+            if (n < 2)
             {
-                if (n % i == 0) return false;
+                return false;
             }
 
-            return true;
+            else if (n == 2)
+            {
+                return true;
+            }
+
+            else if (n % 2 == 0)
+            {
+                return false;
+            }
+            else
+            {
+                int i;
+                for (i = 3;  n % i != 0; i += 2);
+                if (i == n)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
 
         //What will num_digits(0) return? Modify it to return 1 for this case. 
+        //0
         //Does a call to num_digits(-12345) work? 
+        //Ja
         //Trace through the execution and see what happens if you start with a negative number. 
         //Modify num_digits so that it works correctly with any integer value. 
         //Add these tests:
         [Test]
         public void TestExercise15()
         {
-            Assert.AreEqual(1, num_digits(0));
-            Assert.AreEqual(5, num_digits(-12345));
+            //num_digits(0);
+            //num_digits(-12345);
         }
 
         public static int num_digits(int n)
@@ -304,8 +328,8 @@ namespace Programmeren2Opdrachten
             Assert.AreEqual(NumEvenDigits(123456), 3);
             Assert.AreEqual(NumEvenDigits(2468), 4);
             Assert.AreEqual(NumEvenDigits(1357), 0);
-            //Normally we never put leading zeros on numbers, but our number
-            //system has a special case that probably needs special case handling in the code.
+            //// Normally we never put leading zeros on numbers, but our number
+            //// system has a special case that probably needs special case handling in the code.
             Assert.AreEqual(NumEvenDigits(0), 1);
             Assert.AreEqual(NumEvenDigits(0002468), 4);
             Assert.AreEqual(NumEvenDigits(-12345), 2);
@@ -316,14 +340,13 @@ namespace Programmeren2Opdrachten
 
         public static int NumEvenDigits(int n)
         {
-            int calc = 0;
             int even = 0;
-            n = Math.Abs(n);
+            int calc = 0;
             if (n == 0)
             {
                 even++;
             }
-            while(n>0)
+            while (n > 0 || n < 0)
             {
                 calc = n % 2;
                 if (calc == 0)
@@ -345,11 +368,13 @@ namespace Programmeren2Opdrachten
 
         public static double Exercise17(double[] xs)
         {
-            double sum = 0;
-            foreach (double i in xs) {
-                sum += Math.Pow(i, 2);
+            //xs = new double[] { 2, 3, 4 };
+            double sum_of_squares = 0;
+            foreach (double x in xs)
+            {
+                sum_of_squares += Math.Pow(x, 2);
             }
-            return sum;
+            return sum_of_squares;
         }
     }
 }
