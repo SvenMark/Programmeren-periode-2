@@ -42,7 +42,7 @@ namespace Programmeren2Opdrachten
         //in a method named count_letters, and generalize it so that it accepts the string and the letter as arguments. 
         //Make the method return the number of characters, rather than show the answer.
 
-        [Test]
+        //[Test]
         public void TestExercise2()
         {
             //uncomment next line to test your methode!
@@ -136,7 +136,34 @@ namespace Programmeren2Opdrachten
             string text = LoadAliceInWonderland();
             Regex r = new Regex("queen", RegexOptions.IgnoreCase);
             int count = r.Matches(text).Count;
-            return count;    
+            return count;
+
+            //int count = 0;
+            //string book = LoadAliceInWonderland();
+            //string cleanedString = remove_punctuation(book);
+            //string[] words = cleanedString.Split();
+            //foreach (string w in words)
+            //{
+            //    string woord = w.ToLower();
+            //    if (woord == "queen")
+            //    {
+            //        count++;
+            //    }
+            //}
+            //return count;
+        }
+
+        public static string remove_punctuation(string s)
+        {
+            string result = "";
+            foreach (char c in s)
+            {
+                if (!char.IsPunctuation(c))
+                {
+                    result += c;                 // This step is inefficient!
+                }
+            }
+            return result;
         }
 
         //load the book (from file) and return it as a string array
@@ -251,6 +278,16 @@ namespace Programmeren2Opdrachten
                 }
             }
             return s;
+
+            //string new_string = "";
+            //for (int i = 0; i < s.Length; i++)
+            //{
+            //    if (s[i] != chr)
+            //    {
+            //        new_string += s[i];
+            //    }
+            //}
+            //return new_string;
         }
 
 
