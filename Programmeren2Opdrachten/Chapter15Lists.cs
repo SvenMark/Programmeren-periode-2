@@ -8,6 +8,26 @@ namespace Programmeren2Opdrachten
 {
     class Chapter15Lists
     {
+        //difference?:
+        //foreach (int d in daysInMonths)
+        //{
+        //    if (...)
+        //    {    // Add a 13th month to our year, with 25 days.
+        //    daysInMonths.Add(25); // Will give an error
+        //    }
+        //}
+        //===================================================
+        //private List<int> doubleAll_1(List<int> xs)
+        //{
+        //    List<int> result = new List<int>();
+        //    foreach (int x in xs)
+        //    {
+        //        result.Add(2 * x);
+        //    }
+        //    return result;
+        //}
+
+
         //1. Consider this fragment of code:
         //    List<int> xs = new List<int>();
         //    List<int> ys = xs;
@@ -22,7 +42,7 @@ namespace Programmeren2Opdrachten
         //us = vs;
         //Console.WriteLine("Test 2: {0}", us == vs);
         //Provide a detailed explanation of the results.
-        
+
         //3a Write a deep equality test for two arrays of string so that these unit tests pass:
         [Test]
         public void TestExercise3a()
@@ -39,7 +59,14 @@ namespace Programmeren2Opdrachten
 
         public static bool Exercise3a(string[] xs, string[] ys)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < xs.Length; i++)
+            {
+                if(xs[i] != ys[i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         //3b Now do the same for a deep equality test for List<string>.
@@ -58,7 +85,14 @@ namespace Programmeren2Opdrachten
 
         public static bool Exercise3b(List<string> xs, List<string> ys)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < xs.Count; i++)
+            {
+                if (xs[i] != ys[i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         //4a Write two methods that remove all the odd numbers from a list. 
@@ -82,12 +116,26 @@ namespace Programmeren2Opdrachten
 
         public static List<int> RemoveOdds1(List<int> xs)
         {
-            throw new NotImplementedException();
+            List<int> xs_mutated = new List<int>(xs);
+            for (int i = xs.Count - 1; i >= 0; i--)
+            {
+                if (xs[i] % 2 != 0)
+                {
+                    xs_mutated.RemoveAt(i);
+                }
+            }
+            return xs_mutated;
         }
 
         public static void RemoveOdds2(List<int> xs)
         {
-            throw new NotImplementedException();
+            for (int i = xs.Count - 1; i >= 0; i--)
+            {
+                if (xs[i] % 2 != 0)
+                {
+                    xs.RemoveAt(i);
+                }
+            }
         }
 
         //5 Write a method moveToBack(xs, p). 
@@ -109,7 +157,12 @@ namespace Programmeren2Opdrachten
 
         public static void MoveToBack(List<int> xs, int p)
         {
-            throw new NotImplementedException();    
+            if (p >= 0 && p < xs.Count)
+            {
+                int number_at_p = xs[p];
+                xs.RemoveAt(p);
+                xs.Add(number_at_p);
+            }
         }
 
         //6 Re-do the above exercise, this time with fixed-size arrays. 
@@ -131,7 +184,27 @@ namespace Programmeren2Opdrachten
 
         public static void MoveToBack(int[] xs, int p)
         {
-            throw new NotImplementedException();
+            int[] xs_original = new int[xs.Length];
+            for (int i = 0; i < xs.Length; i++)
+            {
+                xs_original[i] = xs[i];
+            }
+            if (p >= 0 && p < xs.Length)
+            {
+                int number_at_p = xs[p];
+                for (int i = xs.Length - 1; i >= 0; i--)
+                {
+                    if (i != p)
+                    {
+                        xs[i - 1] = xs_original[i];
+                    }
+                    else
+                    {
+                        xs[xs.Length - 1] = number_at_p;
+                        break;
+                    }
+                }
+            }
         }
 
         //7 Write a method that deletes any items in a List<int> that are smaller 
@@ -152,16 +225,16 @@ namespace Programmeren2Opdrachten
             Exercise7a(xs);
             Assert.AreEqual(new List<int>() { 12, 16, 16, 18 }, xs);
 
-            xs = new List<int>() { 12, 16, 14, 14, 16, 18, 11, 9, 12, 4, 2 };
-            Exercise7b(xs);
-            Assert.AreEqual(new List<int>() { 12, 16, 14, 16, 18, 12 }, xs);
-            Exercise7b(xs);
-            Assert.AreEqual(new List<int>() { 12, 16, 16, 18 }, xs);
+            //xs = new List<int>() { 12, 16, 14, 14, 16, 18, 11, 9, 12, 4, 2 };
+            //Exercise7b(xs);
+            //Assert.AreEqual(new List<int>() { 12, 16, 14, 16, 18, 12 }, xs);
+            //Exercise7b(xs);
+            //Assert.AreEqual(new List<int>() { 12, 16, 16, 18 }, xs);
         }
 
         public static void Exercise7a(List<int> xs)
         {
-            throw new NotImplementedException();   
+            throw new NotImplementedException();
         }
         
         public static void Exercise7b(List<int> xs)
