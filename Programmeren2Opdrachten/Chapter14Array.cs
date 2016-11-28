@@ -23,7 +23,7 @@ namespace Programmeren2Opdrachten
             int max = xs[0];
             for (int i = 1; i < xs.Length; i++)
             {
-                if (xs[i] < max)
+                if (xs[i] > max)
                 {
                     max = xs[i];
                 }
@@ -42,7 +42,15 @@ namespace Programmeren2Opdrachten
 
         public int Exercise2(int[] xs)
         {
-            throw new NotImplementedException();
+            int sum = 0;
+            for (int i = 0; i < xs.Length; i++)
+            {
+                if (xs[i] % 2 != 0)
+                {
+                    sum += xs[i];
+                }
+            }
+            return sum;
         }
 
         //Write a method to search for a given target string in an array of strings. 
@@ -58,7 +66,14 @@ namespace Programmeren2Opdrachten
 
         public static int Exercise3(string[] xs, string search)
         {
-            throw new NotImplementedException();
+            for(int i = 0; i < xs.Length; i++)
+            {
+                if (xs[i] == search)
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
     
         //Use the method above to write a method that turns a month name into a corresponding month number, 
@@ -75,7 +90,9 @@ namespace Programmeren2Opdrachten
 
         public static int Exercise4(string month)
         {
-            throw new NotImplementedException();
+            string[] months = new string[12] { "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december" };
+            month = month.ToLower();
+            return Exercise3(months, month) + 1; //index begint op 0 dus 0 terug voor january, moet 1 zijn.
         }
 
         //5 Assume we have this definition in our code:
@@ -92,7 +109,20 @@ namespace Programmeren2Opdrachten
 
         public static int Exercise5(string month, int day)
         {
-            throw new NotImplementedException();
+            string[] months = new string[12] { "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december" };
+            int[] daysInMonth = new int[12] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+            int index = Exercise3(months, month);
+            int days = 0;
+            for (int i = 0; i < daysInMonth.Length; i++)
+            {
+                if (i == index)
+                {
+                    days += day;
+                    return days;
+                }
+                days += daysInMonth[i];
+            }
+            return -1;
         }
 
         //6. Arrays can be used to represent mathematical vectors. 
@@ -110,7 +140,12 @@ namespace Programmeren2Opdrachten
 
         public double DotProduct(double[] xs, double[] ys)
         {
-            throw new NotImplementedException();
+            double sum = 0;
+            for(int i = 0; i < xs.Length; i++)
+            {
+                sum += xs[i] * ys[i];
+            }
+            return sum;
         }
 
 
@@ -137,7 +172,12 @@ namespace Programmeren2Opdrachten
 
         public double[] AddVectors(double[] xs, double[] ys) 
         {
-            throw new NotImplementedException();
+            double[] sum_cor = new double[xs.Length];
+            for (int i = 0; i < xs.Length; i++)
+            {
+                sum_cor[i] = xs[i] + ys[i];
+            }
+            return sum_cor;
         }
         
         //8 Write a method scalarMult(s, v) that takes a number, s, and a array, 
@@ -155,7 +195,11 @@ namespace Programmeren2Opdrachten
 
         public double[] Exercise8(double scalar, double[] xs)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < xs.Length; i++)
+            {
+                xs[i] *= scalar;
+            }
+            return xs;
         }
     }
 }
