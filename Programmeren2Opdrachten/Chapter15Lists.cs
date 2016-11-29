@@ -225,21 +225,39 @@ namespace Programmeren2Opdrachten
             Exercise7a(xs);
             Assert.AreEqual(new List<int>() { 12, 16, 16, 18 }, xs);
 
-            //xs = new List<int>() { 12, 16, 14, 14, 16, 18, 11, 9, 12, 4, 2 };
-            //Exercise7b(xs);
-            //Assert.AreEqual(new List<int>() { 12, 16, 14, 16, 18, 12 }, xs);
-            //Exercise7b(xs);
-            //Assert.AreEqual(new List<int>() { 12, 16, 16, 18 }, xs);
+            xs = new List<int>() { 12, 16, 14, 14, 16, 18, 11, 9, 12, 4, 2 };
+            Exercise7b(xs);
+            Assert.AreEqual(new List<int>() { 12, 16, 14, 16, 18, 12 }, xs);
+            Exercise7b(xs);
+            Assert.AreEqual(new List<int>() { 12, 16, 16, 18 }, xs);
         }
 
         public static void Exercise7a(List<int> xs)
         {
-            throw new NotImplementedException();
+            for(int i = xs.Count - 1; i > 0; i--)
+            {
+                if (xs[i] < xs[i - 1])
+                {
+                    xs.RemoveAt(i);
+                }
+            }
         }
         
         public static void Exercise7b(List<int> xs)
         {
-            throw new NotImplementedException();   
+            int i = 0;
+            int j = 0;
+            List<int> PosI = new List<int>(xs);
+            while (i < PosI.Count - 1)
+            {
+                if (PosI[i] > PosI[i + 1])
+                {
+                    xs.RemoveAt(j + 1);
+                    j--;
+                }
+                j++;
+                i++;
+            }
         }
 
         //Voor tekst en uitleg zie blackboard, opdracht aftelversje
@@ -254,7 +272,19 @@ namespace Programmeren2Opdrachten
 
         public static int AftelVersje(int aantalLettergrepen, int aantalKinderen)
         {
-            throw new NotImplementedException();
+            List<int> kinderen = new List<int>();
+            for (int index = 0; index < aantalKinderen; index++)
+            {
+                kinderen.Add(index + 1);
+            }
+            while (kinderen.Count > 1)
+            {
+                for(int i = aantalKinderen; i >= 0; i--)
+                {
+                    
+                }      
+            }
+            return kinderen[0];
         }
     }
 }
