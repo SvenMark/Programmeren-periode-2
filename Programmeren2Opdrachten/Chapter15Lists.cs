@@ -277,12 +277,11 @@ namespace Programmeren2Opdrachten
             {
                 kinderen.Add(index + 1);
             }
+            int index1 = 0;
             while (kinderen.Count > 1)
             {
-                for(int i = aantalKinderen; i >= 0; i--)
-                {
-                    
-                }      
+                index1 = (index1 + (aantalLettergrepen - 1)) % kinderen.Count;
+                kinderen.RemoveAt(index1);   
             }
             return kinderen[0];
         }
