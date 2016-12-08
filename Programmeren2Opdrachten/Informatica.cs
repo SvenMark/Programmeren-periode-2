@@ -67,48 +67,111 @@ namespace Programmeren2Opdrachten
         [Test]
         public static void TestGetScoreByStudentName()
         {
-            //schrijf je eigen test cases
-
+            List<decimal> list = new List<decimal>() { 3, 7, 5, 6 };
+            string studentNaam = "jan";
+            Assert.AreEqual(list, GetScoreByStudentName(studentNaam));
         }
 
         public static List<decimal> GetScoreByStudentName(string name) {
-            throw new NotImplementedException();
+            List<decimal> scores = new List<decimal>();
+            foreach (Exam e in exams)
+            {
+                if (e.Student.Name.ToLower() == name.ToLower())
+                {
+                    scores.Add(e.Score);
+                }
+            }
+            return scores;
         }
 
         //Bepaal het hoogste behaalde resultaat van een student, gebruik als argument de student naam
         [Test]
         public static void TestGetHighestScoreByStudentName()
         {
-            //schrijf je eigen test cases
+            Assert.AreEqual(7 , GetHighestScoreByStudentName("jan"));
         }
 
         public static decimal GetHighestScoreByStudentName(string name)
         {
-            throw new NotImplementedException();
+            decimal biggest = 0;
+            foreach (Exam e in exams)
+            {
+                if (e.Student.Name.ToLower() == name.ToLower())
+                {
+                    if (e.Score > biggest)
+                    {
+                        biggest = e.Score;
+                    }
+                }
+            }
+            return biggest;
         }
+    
 
         //Welke studenten hebben alleen maar voldoendes gehaald?
         [Test]
         public static void TestGoodStudents()
         {
-            //schrijf je eigen test cases
+            List<Student> list = new List<Student>() {klaas, katrijn};
+            Assert.AreEqual(list, GoodStudents());
         }
 
         public static List<Student> GoodStudents()
         {
-            throw new NotImplementedException();
+            List<Student> GoedeLijst = new List<Student>();
+            foreach (Student s in students)
+            {
+                bool good = false;
+                foreach (Exam e in exams)
+                {
+                    if (s.Name.ToLower() == e.Student.Name.ToLower())
+                    {
+                        if (e.Score >= 5.5m)
+                        {
+                            good = true;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+                if (good == true)
+                {
+                    GoedeLijst.Add(s);
+                }
+            }
+            return GoedeLijst;
         }
 
         //Voor welke vak zijn de meeste toetsen gedaan?
         [Test]
         public static void TestMostExamsByCourse()
         {
-            //schrijf je eigen test cases
+            Assert.AreEqual(math, MostExamsByCourse());
         }
 
         public static Course MostExamsByCourse()
         {
-            throw new NotImplementedException();
+            Course biggest = null;
+            int grootste = 0;
+            foreach (Course c in courses)
+            {
+                int count = 0;
+                foreach (Exam e in exams)
+                {
+                    if (c.Name == e.Course.Name)
+                    {
+                        count++;
+                    }
+                }
+                if (count > grootste)
+                {
+                    grootste = count;
+                    biggest = c;
+                }
+            }
+            return biggest;
         }
 
         //Bepaal voor iedere student zijn gemiddelde score 
@@ -116,7 +179,7 @@ namespace Programmeren2Opdrachten
         [Test]
         public static void TestGetAverageScoreByStudent()
         {
-            //schrijf je eigen test cases
+            //Assert.AreEqual(5.25, GetAverageScoreByStudent("jan"));
         }
 
         public class StudentAverage
@@ -145,7 +208,22 @@ namespace Programmeren2Opdrachten
 
         public static List<StudentAverage> GetAverageScoreByStudent(string name)
         {
-            throw new NotImplementedException();
+                decimal total = 0;
+                int count = 0;
+                foreach (Exam e in exams)
+                {
+                    if (name.ToLower() == e.Student.Name.ToLower())
+                    {
+                        total += e.Score;
+                        count++;
+                    }
+                }
+                decimal avg = total / count;
+                List<StudentAverage> avgList = new List<StudentAverage>()
+                {
+                    new StudentAverage() {Name = name, Score = avg}
+                };
+                return avgList;
         }
 
         //Pittig: Hoeveel herkansingen zijn er gedaan?
@@ -153,12 +231,31 @@ namespace Programmeren2Opdrachten
         [Test]
         public static void TestNumberOfResits()
         {
-            //schrijf je eigen test cases
+            Assert.AreEqual(3, NumberOfResits());
         }
         
-        public int NumberOfResits()
+        public static int NumberOfResits()
         {
-            throw new NotImplementedException();
+            int herkansingen = 0;
+            foreach (Course c in courses)
+            {
+                foreach (Student s in students)
+                {
+                    int count = 0;
+                    foreach (Exam e in exams)
+                    {
+                        if (s == e.Student && c.Name == e.Course.Name)
+                        {
+                            count++;
+                        }
+                    }
+                    if (count >= 2)
+                    {
+                        herkansingen++;
+                    }
+                }
+            }
+            return herkansingen;
         }
     }
 }
